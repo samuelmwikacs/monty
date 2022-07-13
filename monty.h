@@ -1,5 +1,5 @@
 #ifndef MAIN_H_
-#define MAIN_H
+#define MAIN_H_
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -33,5 +33,3 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
-void (*f)(stack_t **stack, unsigned int line_number);
