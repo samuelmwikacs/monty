@@ -8,7 +8,7 @@
  * Return: 1 if successful.
 */
 
-int global_varable;
+int global_variable;
 
 int main(int argc, char **argv)
 {
