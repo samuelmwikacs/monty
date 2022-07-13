@@ -2,7 +2,7 @@
 #define MAIN_H_
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <string.h>
 extern int global_variable;
 /**
  * struct stack_s - doubly linked list representation of a stack

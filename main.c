@@ -13,13 +13,13 @@ int global_varable;
 int main(int argc, char **argv)
 {
 	FILE *fp;
+	int i;
 	unsigned int line_no;
 	char buff[32], **line;
 	stack_t *head;
-	int global_variable;
 	instruction_t array[] = {
-		{"push", push},
-		{"pall", print_stack},
+		{"push", wrapper_push},
+		{"pall", wrapper_print},
 		{NULL, NULL}
 	};
 
@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
 	{
-		fprintf("Error: Can't open file <%s>\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file <%s>\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	while (fgets(buff, 32, fp) != NULL)
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 			}
 			else
 			{
-				fprintf("L<%u>: unknown instruction <%s>\n", line_no, line);
+				fprintf(stderr, "L<%u>: unknown instruction <%s>\n", line_no, line);
 				exit(EXIT_FAILURE);
 			}
 		}
