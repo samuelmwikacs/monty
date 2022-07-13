@@ -20,3 +20,8 @@ size_t print_stack(const stack_t *head)
 	}
 	return (length);
 }
+
+void wrapper_print(stack_s **head, unsigned int line_no)
+{
+	print_stack(*head);
+}

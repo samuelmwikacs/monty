@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+extern int global_variable;
 /**
  * struct stack_s - doubly linked list representation of a stack
  * (or queue).
