@@ -6,6 +6,7 @@
  *
  * Return: the new node.
 */
+extern int global_variable;
 stack_t *push(stack_t **head, const int n)
 {
 	stack_t *new_node;
