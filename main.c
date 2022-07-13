@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 		{"pall", print_stack},
 		{NULL, NULL}
 	};
-	
+
 	line_no = 0;
 	if (argc != 2)
 	{
