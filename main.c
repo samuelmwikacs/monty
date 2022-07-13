@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 			}
 			else
 			{
-				fprintf("L<%u>: unknown instruction <%s>\n", line_no, line[0]);
+				fprintf(stderr, "L<%u>: unknown instruction <%s>\n", line_no, line[0]);
 				exit(EXIT_FAILURE);
 			}
 		}
