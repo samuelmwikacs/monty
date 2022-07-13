@@ -37,6 +37,8 @@ typedef struct instruction_s
 char **split_str(char *str);
 void clean(char *s);
 stack_t *push(stack_t **head, const int n);
-void wrapper_push(stack **head, unsigned int line_no);
+void wrapper_push(stack_t **head, unsigned int line_no);
 size_t print_stack(const stack_t *head);
-void wrapper_print(stack_s **head, unsigned int line_no);
+void wrapper_print(stack_t **head, unsigned int line_no);
+
+#endif
