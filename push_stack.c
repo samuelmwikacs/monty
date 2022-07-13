@@ -26,7 +26,7 @@ stack_t *push(stack_t **head, const int n)
 	return (new_node);
 }
 
-void wrapper_push(stack_t **head, unsigned int line_no)
+void wrapper_push(stack_t **head, __attribute__((unused)) unsigned int line_no)
 {
 	push(head, global_variable);
 }
