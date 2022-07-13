@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 	{
 		clean(buff);
 		line_no++;
-		line = split_line(buff);
+		line = split_str(buff);
 		global_variable = atoi(line[1]);
 
 		for (i = 0; array[i].opcode; i++)
@@ -51,12 +51,13 @@ int main(int argc, char **argv)
 			}
 			else
 			{
-				fprintf("L<%u>: unknown instruction <%s>\n", line_no, line);
+				fprintf("L<%u>: unknown instruction <%s>\n", line_no, line[0]);
 				exit(EXIT_FAILURE);
 			}
 		}
 	}
 	fclose(fp);
 	free(line);
+	return (1);
 
 }
