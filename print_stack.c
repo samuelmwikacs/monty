@@ -21,7 +21,7 @@ size_t print_stack(const stack_t *head)
 	return (length);
 }
 
-void wrapper_print(stack_t **head, unsigned int line_no)
+void wrapper_print(stack_t **head, __attribute__((unused)) unsigned int line_no)
 {
 	print_stack(*head);
 }
