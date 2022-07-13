@@ -34,3 +34,9 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+char **split_str(char *str);
+void clean(char *s);
+stack_t *push(stack_t **head, const int n);
+void wrapper_push(stack **head, unsigned int line_no);
+size_t print_stack(const stack_t *head);
+void wrapper_print(stack_s **head, unsigned int line_no);
