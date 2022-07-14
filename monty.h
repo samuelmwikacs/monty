@@ -35,7 +35,7 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-char **split_str(char *str);
+char **split_str(char *str, unsigned int line_no);
 void clean(char *s);
 stack_t *push(stack_t **head, const int n);
 void wrapper_push(stack_t **head, unsigned int line_no);
@@ -44,4 +44,8 @@ void wrapper_print(stack_t **head, unsigned int line_no);
 void check_flag(int flag, unsigned int *ptr, char *str);
 void error_check2(FILE *ptr, char *str);
 void error_check(int *argc);
+int check_dig(char *str);
+void pint(stack_t *head, unsigned int line_no);
+void wrapper_pint(stack_t **head, unsigned int line_number);
+
 #endif

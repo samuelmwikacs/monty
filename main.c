@@ -20,6 +20,7 @@ int main(int argc, char **argv)
 	instruction_t array[] = {
 		{"push", wrapper_push},
 		{"pall", wrapper_print},
+		{"pint", wrapper_pint},
 		{NULL, NULL}
 	};
 
@@ -33,7 +34,7 @@ int main(int argc, char **argv)
 		flag = 0;
 		clean(buff);
 		line_no++;
-		line = split_str(buff);
+		line = split_str(buff, line_no);
 		global_variable = atoi(line[1]);
 		for (i = 0; array[i].opcode != NULL; i++)
 		{

@@ -32,3 +32,31 @@ void wrapper_print(
 {
 	print_stack(*head);
 }
+
+/**
+ * pint- a function that prints the top of a stack.
+ * @head: head of the stack.
+ * @line_no: parameter.
+*/
+void pint(stack_t *head, unsigned int line_no)
+{
+	stack_t *ptr;
+
+	ptr = head;
+	if (ptr == NULL)
+	{
+		fprintf(stderr, "L<%u>: can't pint, stack empty\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", head->n);
+}
+
+/**
+ * wrapper_pint: a pint wrapper function.
+ * @head: parameter.
+ * @line_number: parameter.
+*/
+void wrapper_pint(stack_t **head, unsigned int line_number)
+{
+	pint(*head, line_number);
+}
