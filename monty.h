@@ -41,5 +41,7 @@ stack_t *push(stack_t **head, const int n);
 void wrapper_push(stack_t **head, unsigned int line_no);
 size_t print_stack(const stack_t *head);
 void wrapper_print(stack_t **head, unsigned int line_no);
-
+void check_flag(int flag, unsigned int *ptr, char *str);
+void error_check2(FILE *ptr, char *str);
+void error_check(int *argc);
 #endif
