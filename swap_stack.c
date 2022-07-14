@@ -31,5 +31,5 @@ void swap(stack_t **head, unsigned int line_no)
 */
 void wrapper_swap(stack_t **head, unsigned int line_no)
 {
-	swap(head);
+	swap(head, line_no);
 }
