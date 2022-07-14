@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 		{"push", wrapper_push},
 		{"pall", wrapper_print},
 		{"pint", wrapper_pint},
+		{"pop", wrapper_pop},
 		{NULL, NULL}
 	};
 
