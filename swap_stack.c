@@ -16,9 +16,18 @@ void swap(stack_t **head, unsigned int line_no)
 	}
 	first = ptr;
 	second = ptr->next;
+	temp = second->next;
 	second->next = first;
 	first->prev = second;
-	first->next = NULL;
+	if (temp == NULL)
+	{
+		first->next = temp;
+	}
+	else
+	{
+		first->next = temp;
+		first->next->prev = first;
+	}
 	second->prev = NULL;
 	*head = second;
 }

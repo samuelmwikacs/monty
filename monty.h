@@ -51,5 +51,7 @@ void pop(stack_t **head, unsigned int line_no);
 void wrapper_pop(stack_t **head, unsigned int line_no);
 void swap(stack_t **head, unsigned int line_no);
 void wrapper_swap(stack_t **head, unsigned int line_no);
-
+void add(stack_t **head, unsigned int line_no);
+void wrapper_add(stack_t **head, unsigned int line_no);
+void wrapper_nop(stack_t **head, unsigned int line_no);
 #endif
