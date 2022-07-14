@@ -47,5 +47,7 @@ void error_check(int *argc);
 int check_dig(char *str);
 void pint(stack_t *head, unsigned int line_no);
 void wrapper_pint(stack_t **head, unsigned int line_number);
+void pop(stack_t **head, unsigned int line_no);
+void wrapper_pop(stack_t **head, unsigned int line_no);
 
 #endif
