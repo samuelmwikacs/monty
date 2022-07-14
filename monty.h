@@ -49,5 +49,7 @@ void pint(stack_t *head, unsigned int line_no);
 void wrapper_pint(stack_t **head, unsigned int line_number);
 void pop(stack_t **head, unsigned int line_no);
 void wrapper_pop(stack_t **head, unsigned int line_no);
+void swap(stack_t **head, unsigned int line_no);
+void wrapper_swap(stack_t **head, unsigned int line_no);
 
 #endif
