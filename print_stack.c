@@ -15,13 +15,20 @@ size_t print_stack(const stack_t *head)
 	while (ptr != NULL)
 	{
 		printf("%d\n", ptr->n);
+		fflush(stdout);
 		length++;
 		ptr = ptr->next;
 	}
 	return (length);
 }
 
-void wrapper_print(stack_t **head, __attribute__((unused)) unsigned int line_no)
+/**
+ * wrapper_print- a function.
+ * @head: parameter.
+ * @line_no: parameter.
+*/
+void wrapper_print(
+		stack_t **head, __attribute__((unused)) unsigned int line_no)
 {
 	print_stack(*head);
 }

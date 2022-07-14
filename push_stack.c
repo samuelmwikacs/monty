@@ -6,7 +6,7 @@
  *
  * Return: the new node.
 */
-extern int global_variable;
+
 stack_t *push(stack_t **head, const int n)
 {
 	stack_t *new_node;
@@ -27,6 +27,11 @@ stack_t *push(stack_t **head, const int n)
 	return (new_node);
 }
 
+/**
+ * wrapper_push- a wrapper function.
+ * @head: parameter.
+ * @line_no: parameter.
+*/
 void wrapper_push(stack_t **head, __attribute__((unused)) unsigned int line_no)
 {
 	push(head, global_variable);

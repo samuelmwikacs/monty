@@ -20,7 +20,14 @@ char **split_str(char *str)
 	token = strtok(str, " ");
 	s[0] = token;
 	token = strtok(NULL, " ");
-	s[1] = token;
+	if (token == NULL)
+	{
+		s[1] = "0";
+	}
+	else
+	{
+		s[1] = token;
+	}
 	return (ptr);
 }
 /**
