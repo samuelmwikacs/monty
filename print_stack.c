@@ -52,7 +52,7 @@ void pint(stack_t *head, unsigned int line_no)
 }
 
 /**
- * wrapper_pint: a pint wrapper function.
+ * wrapper_pint- a pint wrapper function.
  * @head: parameter.
  * @line_number: parameter.
 */

@@ -40,7 +40,7 @@ char **split_str(char *str, __attribute__((unused)) unsigned int line_no)
 	token = strtok(str, " ");
 	s[0] = token;
 	token = strtok(NULL, " ");
-	
+
 	if (token == NULL)
 	{
 		s[1] = "0";
