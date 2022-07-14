@@ -1,4 +1,4 @@
-void pop(stack_t **head, unsigned int line_no)
+oid pop(stack_t **head, unsigned int line_no)
 {
 	stack_t *ptr;
   
