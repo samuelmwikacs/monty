@@ -22,7 +22,7 @@ void error_check2(FILE *ptr, char *str)
 {
 	if (ptr == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file <%s>\n", str);
+		fprintf(stderr, "Error: Can't open file %s\n", str);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -37,7 +37,7 @@ void check_flag(int flag, unsigned int *ptr, char *str)
 {
 	if (flag == 0)
 	{
-		fprintf(stderr, "L<%u>: unknown instruction <%s>\n", *ptr, str);
+		fprintf(stderr, "L%u: unknown instruction %s\n", *ptr, str);
 		exit(EXIT_FAILURE);
 	}
 }
