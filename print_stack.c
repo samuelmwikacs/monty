@@ -15,7 +15,6 @@ size_t print_stack(const stack_t *head)
 	while (ptr != NULL)
 	{
 		printf("%d\n", ptr->n);
-		fflush(stdout);
 		length++;
 		ptr = ptr->next;
 	}
