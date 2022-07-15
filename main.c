@@ -54,5 +54,5 @@ int main(int argc, char **argv)
 	}
 	fclose(fp);
 	free(line);
-	return (1);
+	return (0);
 }
