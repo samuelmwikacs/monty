@@ -1,58 +1,133 @@
 #include "monty.h"
-#include <stdio.h>
+
+stack_t *h;
+FILE *file;
+char *value;
+int mode;
+char *cmd;
 /**
- * main- the main function.
- * @argc: argument count.
- * @argv: array of arguments.
- *
- * Return: 1 if successful.
-*/
-
-int global_variable;
-
-int main(int argc, char **argv)
+ * stack_queue - sets to either stack or queue
+ * @stack: beginning of stack
+ * @line_number: line number
+ */
+void stack_queue(stack_t **stack, unsigned int line_number)
 {
-	FILE *fp;
-	int i, flag;
-	unsigned int line_no;
-	char buff[32], **line;
-	stack_t *head;
-	instruction_t array[] = {
-		{"push", wrapper_push},
-		{"pall", wrapper_print},
-		{"pint", wrapper_pint},
-		{"pop", wrapper_pop},
-		{"swap", wrapper_swap},
-		{"add", wrapper_add},
-		{"nop", wrapper_nop},
+	(void)stack;
+	(void)line_number;
+
+	if (strcmp(cmd, "queue") == 0)
+		mode = 1;
+	else
+		mode = 0;
+}
+/**
+ * get_func - gets required function
+ * @opcode: opcode from instruction
+ * Return: pointer to function
+ */
+void (*get_func(char *opcode))(stack_t**, unsigned int)
+{
+	int index = 0;
+
+	instruction_t ops[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{"queue", stack_queue},
+		{"stack", stack_queue},
+		{"sub", sub},
+		{"div", divt},
+		{"mul", mul},
+		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
-
-	line_no = 0;
-	head = NULL;
-	error_check(&argc);
-	fp = fopen(argv[1], "r");
-	error_check2(fp, argv[1]);
-	while (fgets(buff, 32, fp) != NULL)
+	while (ops[index].opcode)
 	{
-		flag = 0;
-		clean(buff);
-		line_no++;
-		if (strlen(buff) == 0)
-			continue;
-		line = split_str(buff, line_no);
-		global_variable = atoi(line[1]);
-		for (i = 0; array[i].opcode != NULL; i++)
-		{
-			if (strcmp(line[0], array[i].opcode) == 0)
-			{
-				array[i].f(&head, line_no);
-				flag = 1;
-			}
-		}
-		check_flag(flag, &line_no, line[0]);
+		if (strcmp(opcode, ops[index].opcode) == 0)
+			return (ops[index].f);
+		index++;
 	}
-	fclose(fp);
-	free(line);
-	return (0);
+	return (NULL);
+}
+/**
+ * run_monty - Runs the opcode command
+ * @buffer: line from file
+ * @line_number: the line number
+ */
+void run_monty(char *buffer, unsigned int line_number)
+{
+	void (*f)(stack_t**, unsigned int);
+
+	cmd = strtok(buffer, " \r\t\n");
+
+	if (cmd && cmd[0] != '#')
+	{
+		f = get_func(cmd);
+		if (f != NULL)
+		{
+			if (strcmp(cmd, "push") == 0)
+				value = strtok(NULL, " \r\t\n");
+			f(&h, line_number);
+		}
+		else
+		{
+			error_op(line_number, cmd);
+			if (buffer)
+				free(buffer);
+			if (h)
+				free_dlistint(h);
+			exit(EXIT_FAILURE);
+		}
+	}
+}
+/**
+ * main - entry point
+ * @ac: argument count
+ * @av: pointer of to arguments
+ * Return: EXIT_SUCCESS on success else EXIT_FAILURE
+ */
+int main(int ac, char **av)
+{
+	size_t status;
+	char *buffer = NULL;
+	unsigned int line_number = 0;
+
+	h = NULL;
+	value = NULL;
+	file = NULL;
+	mode = 0;
+	cmd = NULL;
+	if (ac != 2)
+	{
+		error_ac();
+		exit(EXIT_FAILURE);
+	}
+
+	file = fopen(av[1], "r");
+	if (file == NULL)
+	{
+		error_fopen(av[1]);
+		exit(EXIT_FAILURE);
+	}
+
+	while (getline(&buffer, &status, file) != EOF)
+	{
+		line_number++;
+		if (buffer[0] != '\n')
+			run_monty(buffer, line_number);
+	}
+	if (buffer)
+		free(buffer);
+	if (h)
+		free_dlistint(h);
+	fclose(file);
+	return (EXIT_SUCCESS);
 }
