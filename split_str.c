@@ -29,7 +29,7 @@ int check_dig(char *str)
  * Return: array of strings.
 */
 
-char **split_str(char *str, __attribute__((unused)) unsigned int line_no)
+char **split_str(char *str, unsigned int line_no)
 {
 	char *token;
 	char **s;
@@ -41,9 +41,15 @@ char **split_str(char *str, __attribute__((unused)) unsigned int line_no)
 	s[0] = token;
 	token = strtok(NULL, " ");
 
-	if (token == NULL)
+	if (token == NULL && (strcmp(s[0], "push") == 0))
 	{
-		s[1] = "0";
+		fprintf(stderr, "L%u: usage: push integer\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+	else if ((check_dig(token) == 1 && strcmp(s[0], "push") == 0))
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_no);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
