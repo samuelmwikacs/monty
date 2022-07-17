@@ -119,4 +119,3 @@ stack_t *get_dnodeint_at_index(stack_t *head, unsigned int index)
 	}
 	return (head);
 }
-Footer
